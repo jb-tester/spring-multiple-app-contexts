@@ -10,20 +10,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommonService {
 
-    @Autowired
+    final
     GenericApplicationContext ctx;
 
-    @EventListener
-    public void on(ContextRefreshedEvent event) {
+    public CommonService(GenericApplicationContext ctx) {
+        this.ctx = ctx;
         System.out.println("!!!!!!!!!!!!!!!!!!!");
         System.out.println("current class:");
         System.out.println(this.getClass().getSimpleName());
-        System.out.println("event context:");
-        System.out.println(event.getApplicationContext().getClass().getSimpleName());
-        System.out.println(event.getApplicationContext().getId());
         System.out.println("current context:");
         System.out.println(ctx.getId());
         System.out.println(ctx.getClass().getSimpleName());
+        System.out.println("!!!!!!!!!!!!!!!!!!!");
+    }
+
+    @EventListener
+    public void on(ContextRefreshedEvent event) {
+        System.out.println("!!!!!!!!! context was refreshed !!!!!!!!!!");
+        System.out.println("event context:");
+        System.out.println(event.getApplicationContext().getClass().getSimpleName());
+        System.out.println(event.getApplicationContext().getId());
         System.out.println("!!!!!!!!!!!!!!!!!!!");
     }
 

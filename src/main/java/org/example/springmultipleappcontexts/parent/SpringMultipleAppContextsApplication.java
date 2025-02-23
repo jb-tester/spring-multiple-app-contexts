@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SpringMultipleAppContextsApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder().parent(ParentConfig.class)
+        new SpringApplicationBuilder().parent(ParentContextConfig.class)
                   .web(WebApplicationType.NONE)
                 .child(FirstContextConfig.class)
                   .web(WebApplicationType.SERVLET)

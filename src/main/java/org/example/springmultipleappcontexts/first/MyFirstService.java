@@ -15,23 +15,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyFirstService implements MyService {
 
-    @Value("${my.props.p1}") String prop1;
-    @Value("${my.props.p2}") String prop2;
+    @Value("${my.props.p1}")
+    String prop1;
+    @Value("${my.props.p2}")
+    String prop2;
 
-    @Autowired
+    final
     CommonService commonService;
 
-    @Autowired
+    final
     GenericApplicationContext ctx;
 
-    @EventListener
-    public void on(ContextRefreshedEvent event) {
+    public MyFirstService(CommonService commonService, GenericApplicationContext ctx) {
+        this.commonService = commonService;
+        this.ctx = ctx;
         System.out.println("!!!!!!!!!!!!!!!!!!!");
         System.out.println("current class:");
         System.out.println(this.getClass().getSimpleName());
-        System.out.println("event context:");
-        System.out.println(event.getApplicationContext().getClass().getSimpleName());
-        System.out.println(event.getApplicationContext().getId());
         System.out.println("current context:");
         System.out.println(ctx.getId());
         System.out.println(ctx.getClass().getSimpleName());
@@ -39,7 +39,6 @@ public class MyFirstService implements MyService {
     }
 
     public String getProps() {
-
         return prop1+ " " + prop2;
     }
 

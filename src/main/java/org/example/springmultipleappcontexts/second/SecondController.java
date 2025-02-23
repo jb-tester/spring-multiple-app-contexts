@@ -18,6 +18,6 @@ public class SecondController {
 
     @GetMapping("")
     public ResponseEntity<String> getProps() {
-        return ResponseEntity.ok(myService.getProps());
+        return ResponseEntity.ok(myService.getCommonService() + " " + myService.getProps());
     }
 }
