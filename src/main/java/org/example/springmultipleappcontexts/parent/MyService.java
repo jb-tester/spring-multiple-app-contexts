@@ -7,4 +7,5 @@ package org.example.springmultipleappcontexts.parent;
  */
 public interface MyService {
     String getProps();
+    String getCommonService();
 }

@@ -10,11 +10,13 @@ public class SpringMultipleAppContextsApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder().parent(ParentConfig.class)
-                .web(WebApplicationType.NONE)
+                  .web(WebApplicationType.NONE)
                 .child(FirstContextConfig.class)
-                .web(WebApplicationType.SERVLET)
+                  .web(WebApplicationType.SERVLET)
+                  .properties("server.port=8081")
                 .sibling(SecondContextConfig.class)
-                .web(WebApplicationType.SERVLET)
+                  .web(WebApplicationType.SERVLET)
+                  .properties("server.port=8082")
                 .run(args);
     }
 
